@@ -26,11 +26,11 @@ class MainActivity : AppCompatActivity() {
         recyclerViewPagination.adapter = mAdapter
         //if empty size then we hide recycler view
         if (studentList!!.isEmpty()) {
-            recyclerViewPagination.setVisibility(View.GONE);
-            emptyView.visibility = View.VISIBLE;
+            recyclerViewPagination.visibility = View.GONE
+            emptyView.visibility = View.VISIBLE
         } else {
-            recyclerViewPagination.setVisibility(View.VISIBLE);
-            emptyView.visibility = View.GONE;
+            recyclerViewPagination.visibility = View.VISIBLE
+            emptyView.visibility = View.GONE
         }
         //load more screen
         mAdapter!!.setOnLoadMoreListener(onLoadMoreListener = OnLoadMoreListener {
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                 studentList!!.removeAt(studentList!!.size - 1)
                 mAdapter!!.notifyItemRemoved(studentList!!.size)
                 //add items one by one
-                val start = studentList!!.size;
+                val start = studentList!!.size
                 val end = start + 20
                 for (i in start + 1..end) {
                     studentList!!.add(
@@ -53,9 +53,9 @@ class MainActivity : AppCompatActivity() {
                     )
                     mAdapter!!.notifyItemInserted(studentList!!.size)
                 }
-                mAdapter!!.setLoaded();
+                mAdapter!!.setLoaded()
                 //or you can add all at once but do not forget to call mAdapter.notifyDataSetChanged();
-            }, 2000);
+            }, 2000)
 
         })
 
